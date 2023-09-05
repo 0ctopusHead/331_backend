@@ -1,22 +1,66 @@
 package se331.lab.rest.config;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 import se331.lab.rest.entity.Event;
 import se331.lab.rest.entity.Organizer;
+import se331.lab.rest.entity.Participant;
 import se331.lab.rest.repository.EventRepository;
 import se331.lab.rest.repository.OrganizerRepository;
+import se331.lab.rest.repository.ParticipantRepository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 @RequiredArgsConstructor
 public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     final EventRepository eventRepository;
     final OrganizerRepository organizerRepository;
+    final ParticipantRepository participantRepository;
     @Override
+    @Transactional
     public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent){
-        eventRepository.save(Event.builder()
+        Organizer org1, org2, org3, org4;
+        org1 = organizerRepository.save(Organizer.builder()
+                        .name("CAMT")
+                        .build());
+        org2 = organizerRepository.save(Organizer.builder()
+                        .name("CMU")
+                        .build());
+        org3 = organizerRepository.save(Organizer.builder()
+                        .name("ChiangMai")
+                        .build());
+        org4 = organizerRepository.save(Organizer.builder()
+                .name("Chiang Mai Municipality")
+                .build());
+        Participant par1, par2, par3, par4, par5;
+        par1 = participantRepository.save(Participant.builder()
+                .name("John")
+                .telNo("0812231123")
+                .build());
+        par2 = participantRepository.save(Participant.builder()
+                .name("George")
+                .telNo("0817249873")
+                .build());
+        par3 = participantRepository.save(Participant.builder()
+                .name("Dave")
+                .telNo("0895525425")
+                .build());
+        par4 = participantRepository.save(Participant.builder()
+                .name("Lucy")
+                .telNo("0211400123")
+                .build());
+        par5 = participantRepository.save(Participant.builder()
+                .name("Pong")
+                .telNo("0394221444")
+                .build());
+        Event tempEvent;
+        tempEvent = eventRepository.save(Event.builder()
                 .category("Academic")
                 .title("Midterm Exam")
                 .description("A time for taking the exam")
@@ -24,9 +68,11 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .date("3rd Sept")
                 .time("3.00-4.00 pm.")
                 .petAllowed(false)
-                .organizer("CAMT")
                 .build());
-        eventRepository.save(Event.builder()
+        tempEvent.setOrganizer(org1);
+        org1.getOwnEvents().add(tempEvent);
+
+        tempEvent = eventRepository.save(Event.builder()
                 .category("Academic")
                 .title("Commencement Day")
                 .description("A time for celebration")
@@ -34,9 +80,10 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .date("21th Jan")
                 .time("8.00am-4.00 pm.")
                 .petAllowed(false)
-                .organizer("CMU")
                 .build());
-        eventRepository.save(Event.builder()
+        tempEvent.setOrganizer(org2);
+        org2.getOwnEvents().add(tempEvent);
+        tempEvent = eventRepository.save(Event.builder()
                 .category("Cultural")
                 .title("Loy Krathong")
                 .description("A time for Krathong")
@@ -44,9 +91,10 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .date("21th Nov")
                 .time("8.00-10.00 pm.")
                 .petAllowed(false)
-                .organizer("Chiang Mai")
                 .build());
-        eventRepository.save(Event.builder()
+        tempEvent.setOrganizer(org3);
+        org3.getOwnEvents().add(tempEvent);
+        tempEvent = eventRepository.save(Event.builder()
                 .category("Cultural")
                 .title("Songkran")
                 .description("Let's Play Water")
@@ -54,27 +102,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .date("13th April")
                 .time("10.00am - 6.00 pm.")
                 .petAllowed(true)
-                .organizer("Chiang Mai Municipality")
                 .build());
-        organizerRepository.save(Organizer.builder()
-                .organizer("Zane Franklin")
-                .address("Ap #837-8813 Quis Av.")
-                .build());
-        organizerRepository.save(Organizer.builder()
-                .organizer("Joseph Nieves")
-                .address("P.O. Box 645, 8857 Auctor Street")
-                .build());
-        organizerRepository.save(Organizer.builder()
-                .organizer("Alfonso Sparks")
-                .address("Ap #297-1662 Sem Rd.")
-                .build());
-        organizerRepository.save(Organizer.builder()
-                .organizer("Lacy Harrison")
-                .address("3977 Consectetuer Rd.")
-                .build());
-        organizerRepository.save(Organizer.builder()
-                .organizer("Noble Campbell")
-                .address("Ap #342-2618 Malesuada Road")
-                .build());
+        tempEvent.setOrganizer(org4);
+        org4.getOwnEvents().add(tempEvent);
     }
 }
