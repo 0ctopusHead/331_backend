@@ -70,6 +70,11 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .petAllowed(false)
                 .build());
         tempEvent.setOrganizer(org1);
+        par1.getEventHistory().add(tempEvent);
+        par2.getEventHistory().add(tempEvent);
+        par3.getEventHistory().add(tempEvent);
+        par4.getEventHistory().add(tempEvent);
+        par5.getEventHistory().add(tempEvent);
         org1.getOwnEvents().add(tempEvent);
 
         tempEvent = eventRepository.save(Event.builder()
@@ -82,6 +87,9 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .petAllowed(false)
                 .build());
         tempEvent.setOrganizer(org2);
+        par1.getEventHistory().add(tempEvent);
+        par2.getEventHistory().add(tempEvent);
+        par3.getEventHistory().add(tempEvent);
         org2.getOwnEvents().add(tempEvent);
         tempEvent = eventRepository.save(Event.builder()
                 .category("Cultural")
@@ -93,6 +101,9 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .petAllowed(false)
                 .build());
         tempEvent.setOrganizer(org3);
+        par1.getEventHistory().add(tempEvent);
+        par2.getEventHistory().add(tempEvent);
+        par3.getEventHistory().add(tempEvent);
         org3.getOwnEvents().add(tempEvent);
         tempEvent = eventRepository.save(Event.builder()
                 .category("Cultural")
@@ -104,6 +115,9 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .petAllowed(true)
                 .build());
         tempEvent.setOrganizer(org4);
+        par1.getEventHistory().add(tempEvent);
+        par2.getEventHistory().add(tempEvent);
+        par3.getEventHistory().add(tempEvent);
         org4.getOwnEvents().add(tempEvent);
     }
 }

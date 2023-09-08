@@ -20,5 +20,5 @@ public class ParticipantEventHistoryDTO {
     String date;
     String time;
     Boolean petAllowed;
-    Organizer organizer;
+    EventOrganizerDTO organizer;
 }

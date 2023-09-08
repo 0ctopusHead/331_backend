@@ -3,6 +3,7 @@ package se331.lab.rest.service;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import se331.lab.rest.dao.EventDao;
 import se331.lab.rest.dao.OrganizerDao;
@@ -36,5 +37,9 @@ public class EventServiceImpl implements EventService{
         event.setOrganizer(organizer);
         organizer.getOwnEvents().add(event);
         return eventDao.save(event);
+    }
+    @Override
+    public Page<Event> getEvents(String title, Pageable page){
+        return eventDao.getEvents(title, page);
     }
 }
