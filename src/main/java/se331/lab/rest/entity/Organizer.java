@@ -17,6 +17,8 @@ public class Organizer {
     Long id;
     String name;
     @OneToMany(mappedBy = "organizer")
-    @Builder.Default
+    @Builder.Default// Build the data provided in a default state
     List<Event> ownEvents = new ArrayList<>();
+    @ElementCollection
+    List<String> image;
 }
