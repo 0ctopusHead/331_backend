@@ -1,6 +1,7 @@
 package se331.lab.rest.util;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 import se331.lab.rest.entity.*;
 
@@ -16,4 +17,6 @@ public interface LabMapper {
     ParticipantDTO getParticipantDTO(Participant participant);
 
     List<ParticipantDTO> getParticipantDTO(List<Participant> participants);
+    @Mapping(target = "roles", source = "user.roles")
+    OrganizerAuthDTO getOrganizerAuthDTO(Organizer organizer);
 }

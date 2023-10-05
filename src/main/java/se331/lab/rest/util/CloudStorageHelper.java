@@ -36,7 +36,9 @@ public class CloudStorageHelper {
     public String uploadFile(MultipartFile filePart, final String bucketName) throws IOException{
         SimpleDateFormat sdf =  new SimpleDateFormat("yyyy-MM-dd HHmmssSSS");
         String dtString = sdf.format(new Date());
-        final String fileName = dtString + "-" + filePart.getOriginalFilename();
+        final String fileName = dtString + "-" + filePart.getOriginalFilename(); //Salting
+
+        //Copy the binary from the input as stream
         InputStream is = filePart.getInputStream();
         ByteArrayOutputStream os = new ByteArrayOutputStream();
         byte[] readBuf = new byte[4096];
@@ -44,6 +46,7 @@ public class CloudStorageHelper {
             int bytesRead = is.read(readBuf);
             os.write(readBuf, 0, bytesRead);
         }
+
         //Covert ByteArrayOutputStream into byte[]
         BlobInfo blobInfo =
                 storage.create(

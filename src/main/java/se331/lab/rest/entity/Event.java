@@ -25,6 +25,6 @@ public class Event {
     Organizer organizer;
     @ManyToMany(mappedBy = "eventHistory")
     List<Participant> participants;
-    @ElementCollection
+    @ElementCollection // One to Many ( One Event have List of String ) --> New table will be created according to the < Event >
     List<String> images;
 }
