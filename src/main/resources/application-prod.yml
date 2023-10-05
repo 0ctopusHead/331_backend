@@ -1,4 +1,7 @@
 spring:
+  profiles:
+    active:
+      - db
   datasource:
     url:
       jdbc:mysql://db:3306/selabdb?createDatabaseIfNotExist=true&autoReconnect=true&c
