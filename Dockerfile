@@ -1,5 +1,5 @@
-FROM openjdk:20-jdk
-RUN groupadd -S spring && adduser -S spring -G spring
+FROM openjdk:17-alpine
+RUN addgroup -S spring && adduser -S spring -G spring
 EXPOSE 8080
 
 ENV JAVA_PROFILE prod
