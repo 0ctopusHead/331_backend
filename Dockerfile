@@ -1,4 +1,5 @@
 FROM openjdk:20-jdk
+RUN yum-config-manager --enable epel && yum update -y && yum -y install      shadow-utils.x86_64 xmlstarlet saxon augeas bsdtar unz
 RUN addgroup -S spring && adduser -S spring -G spring
 EXPOSE 8080
 
