@@ -13,3 +13,10 @@ spring:
   servlet:
     multipart:
       max-file-size: 10MB
+application:
+  security:
+    jwt:
+      expiration: 86400000
+      refresh-token:
+        expiration: 604800000
+      secret-key: ZwLu/javbd2mWvC8tjnj0rhWCPSni7h8LOFTewy5deylZyBA5u183gty72dV0gQyb0Mn8zOVlgN0O3yrhFI1XSL5pk5dNp2nzWBvJfp8P/90BAeSLK/wqsYTcWXOmHQfvozLEwH8MoVttAY9/+06mmWN4wUbysqqzTcW9fAluq1m42jMGFm5puQHLOQMSY4rwjZ+St3+/ts+kNpAryxlcXyhhJEBYqr2qZvSb7mMTRne9a2R40mTxUd3RR/X5k5AL7Ec8We+hQ/pzLHskBPQjRBLgNhPNJ81LCKsLjyjvMw1f7HDP943Rk/YMrF+BWX9YlLF3L3zu5ItD5ty1m7ckroOAbNGhpsw2/PxqjXNa2iindW6R6VRQeUfCfV6TYe6uadEmoHF1q48CnpSlb6OT+KBrfK9dgDLQooHq4vMFxenfdQuvLyh3ro/CejtQkj7+/lrY5FFXu1SBLWTxh0yzM/Zh8N0TRVfRjlnzoEGJgGzDeSs/ZEJhxxh3u9CCYRIk0nWHOUU/bRtTp5Qf734DIjYoU50aiD6BncOExBizz9YPfr5YbiSA3myjWflPeogAQPaGafMoFS84Ysm1yfXGLNzBUDv9sm6G+HmlEeyN0QCP6E/veIT2uOQM3wliraQynDrDKCnlqzuLAPccmjPtv0wJyftZDUREZf+/8WLOdNyxV2gUQ41ZQna0w61Dv2m
