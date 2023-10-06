@@ -1,5 +1,4 @@
 FROM openjdk:20-jdk
-RUN sudo apt install shadow-utils.x86_64
 RUN addgroup -S spring && adduser -S spring -G spring
 EXPOSE 8080
 
