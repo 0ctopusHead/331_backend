@@ -36,6 +36,7 @@ public class SecurityConfiguration {
                 authorize.requestMatchers("api/v1/auth/**").permitAll()
                         .requestMatchers(HttpMethod.GET,"/events").permitAll()
                         .requestMatchers(HttpMethod.GET,"/organizers").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/participants").permitAll()
                         .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
                         .requestMatchers(HttpMethod.POST,"/events").hasRole("ADMIN")
                         .anyRequest().authenticated();

@@ -58,6 +58,8 @@ public class AuthenticationService {
                     request.getPassword()
             )
     );
+    System.out.println(request.getUsername());
+    System.out.println(request.getPassword());
     User user = repository.findByUsername(request.getUsername())
             .orElseThrow();
 

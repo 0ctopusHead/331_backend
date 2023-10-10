@@ -1,6 +1,6 @@
 package se331.lab.rest.util;
 
-import org.mapstruct.Mapper;
+import  org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 import se331.lab.rest.entity.*;
